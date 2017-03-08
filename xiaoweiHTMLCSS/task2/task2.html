@@ -111,47 +111,62 @@
             </tr>
         </table>
     </div>
+
+
+    <div class="post post5">
+    <h3>这里以后是一个侧栏，这是侧栏的标题</h3>
+    <form>
+        <div class="fmitem">
+            <div class="fmitemname">请输入邮箱地址</div>
+            <input type="text" name="mail" value="这是一个文本输入框"/>
+        </div>
+        <div class="fmhint">
+            邮箱地址请按要求格式输入
+        </div>
+        <div class="fmitem fmitem">
+            <div class="fmitemname">请输入密码</div>
+            <input type="password" name="pwdinput" value="password1"/>
+        </div>
+        <div class="fmitem">
+            <div class="fmitemname">请重复输入密码</div>
+            <input type="password" name="pwdconfirm" value="password2">
+        </div>
+        
+        <div class="fmhint">
+            密码请为6-16位英文数字
+        </div>
+
+        <div class="fmitem">
+            <div class="fmitemname">性别</div>
+            <label><input type="radio" name="sex" value="male" checked="checked"/>男</label>
+            <label><input type="radio" name="sex" value="female"/>女</label>
+        </div>
+        <div class="fmitem">
+            <div class="fmitemname">城市</div>
+            <select name="city">
+                <option value="beijing" selected="selected">北京</option>
+                <option value="shanghai">上海</option>
+                <option value="guangzhou">广州</option>
+            </select>
+        </div>
+        <div class="fmitem">
+            <div class="fmitemname">爱好</div>
+            <label><input type="checkbox" name="sports"/>运动</label>
+            <label><input type="checkbox" name="arts"/>艺术</label>
+            <label><input type="checkbox" name="science"/>科学</label>
+        </div>
+        <div class="fmitem">
+            <div class="fmitemname">个人描述</div>
+            <textarea name="description">这是一个多行输入框，输入您的个人描述</textarea>
+        </div>
+        <div class="fmitem fmsubmit">
+            <input type="submit" name="submit" value="确认提交"／>
+        </div>
+
+    </form>
+    </div>
 </div>
-
-<h2>这里以后是一个侧栏，这是侧栏的标题</h2>
-<h2>侧栏注册窗口标题</h2>
-<form>
-    <p>
-        请输入邮箱地址：
-        <input type="text" name="mail" value="这是一个文本输入框"/>
-    </p>
-    <p>
-        邮箱地址请按要求格式输入
-    </p>
-    <p>
-        请输入密码：
-        <input type="text" name="pwdinput" value="这是一个文本输入框"/>
-        请重复输入密码：
-        <input type="text" name="pwdconfirm" value="这是一个文本输入框"/>
-    </p>
-    <p>
-        密码请为6-16位英文数字
-    </p>
-    <p>
-        性别：
-        <label><input type="radio" name="sex" value="male" checked="checked"/>男</label>
-        <label><input type="radio" name="sex" value="female"/>女</label>
-        城市：
-        <select name="city">
-            <option value="beijing" selected="selected">北京</option>
-            <option value="shanghai">上海</option>
-            <option value="guangzhou">广州</option>
-        </select>
-        爱好：
-        <label><input type="checkbox" name="sports"/>运动</label>
-        <label><input type="checkbox" name="arts"/>艺术</label>
-        <label><input type="checkbox" name="science"/>科学</label>
-        个人描述：
-        <textarea name="description">这是一个多行输入框，输入您的个人描述</textarea>
-        <input type="submit" name="submit" value="确认提交"／>
-    </p>
-
-</form>
+    
 <footer>
     版权所有©️
 </footer>
