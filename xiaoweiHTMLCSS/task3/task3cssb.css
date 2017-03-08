@@ -1,0 +1,65 @@
+/*position solusion*/
+
+*{
+    margin:0px;
+    padding: 0px;
+}
+
+
+#mainbody{
+    margin: 20px;
+    background-color: #eee;
+    border: 1px solid #999;
+    position: relative;
+    /*absolute也ok*/
+    min-width: 500px;
+    min-height: 470px;
+    /*overflow:auto;*/
+    
+}
+
+#column_team{
+    /*margin: 20px;*/
+    border: 1px solid #999;
+    background-color: white;
+    width: 200px;
+    position: absolute;
+    top:20px;
+    left:20px;
+}
+
+#column_intro{
+    border: 1px solid #999;
+    background-color: snow;
+    margin: 20px 163px 20px 243px;
+    /*position: absolute;*/
+    /*top:20px;*/
+    /*left: 240px;*/
+    /*right: 160px;*/
+    /*intro不能设置成absolute，否则父元素mainbody得不到intro的高度，会形成高度崩塌*/
+    /*margin的时候不要忘了计算上border的宽度*/
+}
+
+#column_person{
+    border: 1px solid #999;
+    background-color: white;
+    width: 120px;
+    position: absolute;
+    top:20px;
+    right:20px;
+}
+
+.logo{
+    margin: 20px;
+    display: block;
+    border: 1px solid #999;
+}
+
+.teamlogo{
+    float: left;
+}
+
+
+p{
+    margin: 20px;
+}

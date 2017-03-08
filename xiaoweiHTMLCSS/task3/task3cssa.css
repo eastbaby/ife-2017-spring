@@ -1,0 +1,52 @@
+/*float solusion*/
+
+*{
+    margin:0px;
+    padding: 0px;
+}
+
+
+#mainbody{
+    margin: 20px;
+    background-color: #eee;
+    border: 1px solid #999;
+    overflow: hidden;
+}
+
+#column_team{
+    margin: 20px;
+    border: 1px solid #999;
+    background-color: white;
+    width: 200px;
+    float: left;
+}
+
+#column_intro{
+    margin: 20px;
+    border: 1px solid #999;
+    background-color: snow;
+    width: auto;
+    overflow: hidden;
+}
+
+#column_person{
+    margin: 20px;
+    border: 1px solid #999;
+    background-color: white;
+    width: 120px;
+    float: right;
+}
+
+.logo{
+    margin: 20px;
+    display: block;
+    border: 1px solid #999;
+}
+
+.teamlogo{
+    float: left;
+}
+
+p{
+    margin: 20px;
+}
