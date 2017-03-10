@@ -1,0 +1,57 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    /*position: relative;
+    不指定body position也可以，毕竟跟元素*/
+    background-color: antiquewhite;
+}
+
+#box{
+    width: 400px;
+    height: 200px;
+    background-color: #cccccc;
+    /*方法一，利用css3的新特性*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    /*方法二，利用margin auto。注意absolute时候，同时设置top，bottom时高度才撑开，
+    左右同理。普通流的时候margin auto会让左右居中。*/
+    /*position: absolute;*/
+    /*top: 0px;*/
+    /*left: 0px;*/
+    /*right: 0px;*/
+    /*bottom: 0px;*/
+    /*margin: auto;*/
+    
+    /*方法三，前提是box的宽高必须固定。负margin值等于padding加border。*/
+    /*position: absolute;*/
+    /*top: 50%;*/
+    /*left: 50%;*/
+    /*margin-left: -200px;*/
+    /*margin-top:-100px;*/
+}
+
+.fan{
+    width: 50px;
+    height: 50px;
+    background-color: #fc0;
+}
+.fan1{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-bottom-right-radius: 50px;
+    
+}
+
+.fan2{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    border-top-left-radius: 50px;
+}

@@ -27,6 +27,7 @@
     background-color: snow;
     width: auto;
     overflow: hidden;
+    /*也可以用margin left right 解决*/
 }
 
 #column_person{
