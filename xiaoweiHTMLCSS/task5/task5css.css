@@ -1,0 +1,203 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-color: #dedede;
+    position: relative;
+}
+
+#header{
+    background-color: #333333;
+    height: 60px;
+}
+
+.headerlogo{
+    float: left;
+    margin-top: 5px;
+    margin-left: 40px;
+}
+.headerlogo img{
+    height: 45px;
+    width: 140px;
+}
+
+.headernav {
+    float: right;
+    line-height: 60px;
+    font-size: 12px;
+    list-style-type: disc;
+}
+
+.headernav li {
+    float: left;
+    margin-left: 15px;
+    margin-right: 20px;
+    white-space:nowrap;
+}
+
+
+.headernav li a:link,.headernav li a:visited{
+    text-decoration: none;
+    color: snow;
+}
+
+.headernav li a:hover,.headernav li a:active{
+    text-decoration: none;
+    color: grey;
+}
+
+.articles{
+    margin-right: 462.5px;
+}
+.post{
+    margin: 20px;
+    padding: 40px 20px;
+    border: 1px solid #cdcdcd;
+    box-shadow: 2px 2px 2px#888888;
+    background-color: #ffffff;
+}
+
+.post h3{
+    font-weight: normal;
+    color: grey;
+}
+
+.post h5{
+    font-weight: normal;
+    color: grey;
+}
+
+.post p{
+    font-size: large;
+    text-indent: 2em;
+    line-height: 1.8em;
+}
+
+.post > img{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.post2 ul{
+    list-style: none;
+    font-size: large;
+    padding-left: 20px;
+}
+
+.post2 li{
+    text-decoration: none;
+    margin:0.5em;
+}
+
+.post3 ul{
+    list-style: none;
+    padding-left: 20px;
+    overflow: hidden;
+}
+.post3 li{
+    border: thin solid lightgray;
+    text-align: center;
+    margin:20px;
+    width: 140px;
+    height: 180px;
+    float: left;
+    
+}
+
+.desc{
+    margin:10px;
+}
+.post3 li img{
+    height:125px;
+    width:120px;
+}
+
+.post4 ol{
+    font-size: large;
+    padding-left: 40px;
+}
+
+.post4 li{
+    text-decoration: none;
+    margin:0.5em;
+}
+
+.tb{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tb th, .tb td{
+    border:thin solid #cccccc;
+    padding: 4px;
+}
+.tb th{
+    text-align: left;
+    color: snow;
+    background-color: black;
+}
+.tr6{
+    background-color: #cccccc;
+    font-weight: 900;
+}
+
+.post5{
+    width: 400px;
+    position: absolute;
+    top: 60px;
+    right: 0px;
+}
+
+.post5 > h3{
+    font-weight: 900;
+    color: black;
+    padding: 10px;
+    border-left: medium solid #cccccc;
+}
+
+.fmitem {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.fmitemname{
+    float: left;
+    width: 30%;
+    text-align: right;
+    padding-right: 15px;
+}
+
+.fmhint {
+    padding-left: 30%;
+    margin: 15px;
+    color: grey;
+}
+
+
+
+.post5 textarea{
+    width: 60%;
+    height: 150px;
+    font-size: 20px;
+}
+
+.fmsubmit input{
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+    text-align: center;
+    color: snow;
+    background-color: #3355d0;
+    border:none;
+    border-radius: 10px;
+}
+
+footer{
+    background-color: black;
+    height: 60px;
+    text-align: center;
+    color: snow;
+    padding-top:20px;
+}
