@@ -1,0 +1,401 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background-color: grey;    
+}
+
+#background{
+    width: 892px;
+    height: 1386px;
+    background-color: white;
+    margin: auto;
+    padding: 0 44px;
+}
+
+.clearfix:after{
+    content: '';
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+
+.header{
+    height: 61px;
+    position: relative;
+}
+
+.logo {
+    width: 110px;
+    height: 61px;
+    background-color: #d45d5c;
+}
+
+.logo p{
+    font-size: 12px;
+    font-family: "Heiti SC";
+    position: absolute;
+    bottom: 6px;
+    left: 7px;
+    color: white;
+}
+
+.date{
+    font-size: 12px;
+    font-family: "Heiti SC";
+    position: absolute;
+    bottom: 6px;
+    right: 0;
+    color: #d45d5c;
+}
+
+.hr1{
+    background-color: #938e8c;
+    height: 2px;
+    border: none;
+    /*默认hr标签有border且上下颜色不同*/
+}
+
+.row1 {
+    padding: 34px 0 41px 0;
+}
+
+.bigimg{
+    float: left;
+    position: relative;
+}
+
+#baseimg{
+    position: absolute;
+    /*z-index: 1;*/
+    top: 0;
+    left: 0;
+}
+
+#greencover{
+    position: absolute;
+    /*z-index: 2;*/
+    top: 0;
+    left: 0;
+}
+
+#redcover{
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 450px;
+    /*如果父元素baseimg设定了固定宽度，则可以用right:0 定位*/
+}
+
+.technologe{
+    float: right;
+    margin-left: 48px;
+    width: 203px;
+    height: auto;
+    border-top: 2px solid #cc8091;
+}
+
+#techp1{
+    font: 24px/40px "微软雅黑";
+    text-decoration: underline;
+    color: black;
+    font-variant: small-caps; 
+    text-transform: capitalize;
+}
+
+/*#techp1:first-letter{*/
+    /*font-size: 30px;*/
+/*}*/
+/*该方法会导致下划线重叠，除非用after单独设置下划线*/
+
+#techp2{
+    font: 12px/10px "楷体";
+    color: #676767;
+}
+
+#techp3{
+    font: oblique 116px "微软雅黑" ;
+    color: #75b86b;
+    margin-left: -15px;
+}
+
+
+/*table方法设置vertical-algin仍有间隙，problem here.是margin合并问题吗？*/
+#techtb{
+    margin-top: -10px;
+    border-collapse: collapse;
+    border-width: 0px;
+}
+
+#td1{
+    font: 55px "微软雅黑";
+    color: #cc8091;
+    vertical-align: bottom;
+    line-height: 55px;
+}
+
+#td2{
+    font: 21px "微软雅黑";
+    color: #cc8091;
+    vertical-align: bottom;
+    line-height: 5px;
+}
+
+#td3{
+    font: 12px "微软雅黑";
+    color: #676767;
+    vertical-align: middle;
+    height: 25px;
+}
+
+.whatwhenhow{
+    width: 641px;
+    margin-bottom: 50px;
+}
+.What{
+    float: left;
+    width: 220px;
+    margin-right: 30px;
+}
+
+.When{
+    float: left;
+    width: 205px;
+    margin-right: 30px;
+}
+
+.How{
+    float: left;
+    width: 150px;
+}
+
+
+.wwh{
+    font: bolder 16px "微软雅黑";
+    text-decoration: underline;
+}
+.What .wwh{
+    color: #418c59;
+}
+.When .wwh{
+    color: #d2994f;
+}
+.How .wwh{
+    color: #cc7680;;
+}
+
+.qianduan{
+    font: 12px "Songti TC";
+    color: #767777;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.percent{
+    font: 12px "微软雅黑";
+    color: #231815;
+    opacity: 0.7;
+    padding-top: 6px;
+    /*为什么如果用margin-top代替padding-top就会和qianduan合并外边距*/
+}
+
+.percent span{
+    font-style: italic;
+    color: #cd4a48;
+}
+
+.downleft{
+    float: left;
+    width: 415px;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.dltitle{
+    font:bolder 42px "STHeiti";
+    color: #11456b;
+    padding-bottom: 4px;
+}
+
+.dltitle span{
+    font-style: italic;
+    font-size:72px;
+    color: #f5e327;
+}
+
+.dltitle2{
+    font:bolder 33px "STHeiti";
+    color: #11456b;
+    padding-bottom: 10px;
+    border-bottom:2px #11456b solid;
+}
+.firstqianduan{
+    margin-top: 10px;
+}
+
+.firstqianduan:first-letter{
+    color: #f5e327;
+    font-size: 70px;
+    font-family: "微软雅黑";
+    margin: -10px 5px -10px 0;
+    float: left;
+}
+.firstqianduan img{
+    float: right;
+    margin: 15px 0 15px 15px;
+}
+
+.secondqianduan, .thirdqianduan{
+    text-indent: 25px;
+}
+
+
+
+.downright{
+    float: right;
+    margin-bottom: 30px;
+}
+
+.drpicture{
+    position: relative;
+    margin-bottom: 33px;
+}
+.greycover{
+    position: absolute;
+    bottom: 4px;
+}
+.greycoverfont{
+    position: absolute;
+    left: 30px;
+    bottom: 12px;
+    width: 350px;
+    height: 44px;
+    padding-left: 10px;
+    border-left: 3px solid #72b16a;
+    color: white;
+    font: 26px "微软雅黑";
+}
+
+.greycoverfont span{
+    font: oblique 12px "微软雅黑";
+    color: #72b16a;
+    padding-left: 1.4em;
+}
+
+/*小心发生外边距合并*/
+.drtext{
+    background-color: #eeedd6;
+    width: 459px;
+    height: 318px;
+    position: relative;
+}
+
+.pathtext{
+    font: 16px "Songti TC";
+    color: #5a5b5b;
+    padding-top: 20px;
+    padding-left: 40px;
+    text-align: left;
+}
+
+.pathtext span{
+    font-style: italic;
+    font-size: 12px;
+    text-align: right;
+}
+
+.zero{
+    width: 260px;
+    height: 160px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    background-color: #d45d5c;
+}
+
+.zerotb{
+    border-collapse: collapse;
+    margin-left: 10px;
+    color: white;
+}
+
+.ztb1{
+    font: 110px "微软雅黑";
+    height: 86px;
+    padding-right: 10px;
+}
+.ztd2{
+    font: italic 21px/24px "Heiti SC";
+    vertical-align: bottom;
+}
+
+.ztd3{
+    font: 12px/18px "Heiti SC";
+    vertical-align: top;
+}
+
+.sepline{
+    width: 2px;
+    height: 86px;
+    background-color: white;
+    position: absolute;
+    bottom: 35px;
+    left: 78px;
+}
+
+.helloworld{
+    width: 180px;
+    height: 160px;
+    position: absolute;
+    bottom: 0px;
+    right: 10px;
+    font: italic 14px/16px "Heiti SC";
+    color: #5a5b5b;
+}
+
+.helloworldtext{
+    padding: 15px 10px;
+    text-indent: 36px;
+}
+
+.quot1,.quot2{
+    color: #d45d5c;
+    font-style: normal;
+    font-size: 72px;
+}
+
+.quot1{
+    position: absolute;
+    top: 25px;
+    left: -30px;
+}
+
+.quot2{
+    position: absolute;
+    bottom: 20px;
+    right: -25px;
+}
+
+.hr2{
+    background-color: #938e8c;
+    height: 1px;
+    border: none;
+    /*默认hr标签有border且上下颜色不同*/
+    clear: both;
+}
+
+.footer{
+    position: relative;
+}
+
+.footlogo{
+    font-size: 12px;
+    font-family: "Heiti SC";
+    position: absolute;
+    top: 4px;
+    right: 0px;
+    color: #d45d5c;
+}
