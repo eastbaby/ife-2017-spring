@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--有一个input输入框，以及4个操作按钮-->
+<!--点击"左侧入"，将input中输入的数字从左侧插入队列中；-->
+<!--点击"右侧入"，将input中输入的数字从右侧插入队列中；-->
+<!--点击"左侧出"，读取并删除队列左侧第一个元素，并弹窗显示元素中数值；-->
+<!--点击"右侧出"，读取并删除队列又侧第一个元素，并弹窗显示元素中数值；-->
+<!--点击队列中任何一个元素，则该元素会被从队列中删除-->
+<head>
+    <meta charset="UTF-8">
+    <title>IFE JavaScript Task 04</title>
+    <style>
+        #queue{
+            margin-top: 10px;
+        }
+        span{
+            background: red;
+            margin: 5px;
+            padding: 5px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <input type="text" id="txt" />
+    <!--用<button>zuoceru</button>也可以-->
+    <input type="button" id="leftin" value="左侧入"/>
+    <input type="button" id="rightin" value="右侧入"/>
+    &nbsp;&nbsp;
+    <input type="button" id="leftout" value="左侧出"/>
+    <input type="button" id="rightout" value="右侧出"/>
+</div>
+<div id="queue"></div>
+
+<script type="text/javascript">
+    var inputtxt = document.getElementById("txt");
+    var btnleftin = document.getElementById("leftin");
+    var btnrightin = document.getElementById("rightin");
+    var btnleftout = document.getElementById("leftout");
+    var btnrightout = document.getElementById("rightout");
+    var queueele = document.getElementById("queue");
+    
+    function inputNum() {
+        //确保输入数字
+        if(inputtxt.value === "" || isNaN(inputtxt.value))
+        {
+            alert("Input a Number!");
+        }
+        else
+        {
+            var txtnode = document.createTextNode(inputtxt.value);
+            var ele = document.createElement("span");
+            ele.appendChild(txtnode);
+            return ele;
+        }
+    }
+    
+    btnleftin.onclick = function () {
+        if(queueele.children === null){
+            queueele.appendChild(inputNum());
+        }
+        else
+        {
+            queueele.insertBefore(inputNum(), queueele.firstChild);
+        }
+    }
+
+    btnrightin.onclick = function () {
+        queueele.appendChild(inputNum());
+    }
+
+    btnleftout.onclick = function () {
+        if(queueele.children)
+        {
+            var rmele = queueele.removeChild(queueele.firstChild);
+            alert("已删除"+rmele.innerHTML);
+        }
+    }
+
+    btnrightout.onclick = function () {
+        if(queueele.children)
+        {
+            var rmele = queueele.removeChild(queueele.lastChild);
+            alert("已删除"+rmele.innerHTML);
+        }
+    }
+
+//    queueele.addEventListener("click",function(e){
+//        if(e.target.tagName.toLowerCase()==="span"){
+//            queueele.removeChild(e.target);
+//        }
+//    })
+
+//    或者用onclick函数
+    queueele.onclick = function(e){
+        if(e.target.tagName.toLowerCase()==="span") //判断可有可无
+        {
+            queueele.removeChild(e.target);
+        }
+    }
+    
+</script>
+</body>
+</html>
