@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--基于上一任务-->
+<!--限制输入的数字在10-100-->
+<!--队列元素数量最多限制为60个，当超过60个时，添加元素时alert出提示-->
+<!--队列展现方式变化如图，直接用高度表示数字大小-->
+<!--实现一个简单的排序功能，如冒泡排序（不限制具体算法），用可视化的方法表达出来.-->
+<head>
+    <meta charset="UTF-8">
+    <title>IFE JavaScript Task 05</title>
+    <style>
+        #queue{
+            margin-top: 10px;
+        }
+        .queueitm{
+            display: inline-block;
+            background-color: red;
+            margin: 2px;
+            width: 15px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <input type="text" id="txt" />
+    <!--用<button>zuoceru</button>也可以-->
+    <input type="button" id="leftin" value="左侧入"/>
+    <input type="button" id="rightin" value="右侧入"/>
+    &nbsp;&nbsp;
+    <input type="button" id="leftout" value="左侧出"/>
+    <input type="button" id="rightout" value="右侧出"/>
+    <button id = "bubblesort"> 冒泡排序 </button>
+</div>
+<div id="queue"></div>
+
+<script type="text/javascript">
+    var inputtxt = document.getElementById("txt");
+    var btnleftin = document.getElementById("leftin");
+    var btnrightin = document.getElementById("rightin");
+    var btnleftout = document.getElementById("leftout");
+    var btnrightout = document.getElementById("rightout");
+    var btnbubblesort = document.getElementById("bubblesort");
+    var queueele = document.getElementById("queue");
+
+    function isqueuenumValid(){
+        return queueele.childElementCount < 60;
+    }
+    
+    function inputNum() {
+        //确保输入数字
+        if(inputtxt.value === "" || isNaN(inputtxt.value))
+        {
+            alert("Input a Number!");
+        }
+        else if(inputtxt.value < 10 || inputtxt.value > 100)
+        {
+            alert("Range in [10,100]!")
+        }
+        else {
+            var ele = document.createElement("div");
+            ele.setAttribute("class","queueitm");
+            ele.style.height = inputtxt.value + "px";
+            ele.style.marginTop = (100-Number(inputtxt.value))+"px";
+            return ele;
+        }
+    }
+
+    btnleftin.onclick = function () {
+        if (!isqueuenumValid()) {
+            alert("item number in this queue must be 0 ~ 60.");
+        }
+        else {
+            if (queueele.children === null) {
+                queueele.appendChild(inputNum());
+            }
+            else {
+                queueele.insertBefore(inputNum(), queueele.firstChild);
+            }
+        } 
+    }
+
+    btnrightin.onclick = function () {
+        if (!isqueuenumValid()) {
+            alert("item number in this queue must be 0 ~ 60.");
+        }
+        else {
+            queueele.appendChild(inputNum());
+        }
+    }
+
+    btnleftout.onclick = function () {
+        if(queueele.children)
+        {
+            var rmele = queueele.removeChild(queueele.firstChild);
+            alert("已删除"+rmele.innerHTML);
+        }
+    }
+
+    btnrightout.onclick = function () {
+        if(queueele.children)
+        {
+            var rmele = queueele.removeChild(queueele.lastChild);
+            alert("已删除"+rmele.innerHTML);
+        }
+    }
+
+    btnbubblesort.onclick = function () {
+        var itms = queueele.children;
+        for(var i = 0; i < itms.length; i++)
+        {
+            for(var j = i+1; j <itms.length ; j++)
+            {
+                //parseInt("10px") = 10
+                if(parseInt(itms[i].style.height) > parseInt(itms[j].style.height))
+                {
+//                    var tmp = itms[i];
+//                    itms[i] = itms[j];
+//                    itms[j] = tmp;
+
+                    //为什么不能向上面那样直接赋值？
+                    var tmpheight = itms[i].style.height;
+                    var tmpmargintop = itms[i].style.marginTop;
+                    itms[i].style.height = itms[j].style.height;
+                    itms[i].style.marginTop = itms[j].style.marginTop;
+                    itms[j].style.height = tmpheight;
+                    itms[j].style.marginTop = tmpmargintop;
+
+                }
+            }
+        }
+    }
+
+    //    queueele.addEventListener("click",function(e){
+    //        if(e.target.tagName.toLowerCase()==="span"){
+    //            queueele.removeChild(e.target);
+    //        }
+    //    })
+
+    //    或者用onclick函数
+    queueele.onclick = function(e){
+        queueele.removeChild(e.target);
+    }
+
+</script>
+</body>
+</html>
