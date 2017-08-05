@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--添加节点的选择、增加与删除的功能-->
+    <title>ife javascript task9 tree3.0</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+
+        #root,#root div{
+            border: 1px solid black;
+            margin: 20px 5px;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: space-around;
+            flex-grow: 1;
+            background-color: white;
+        }
+
+        .btn{
+            margin-top: 10px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="root">Super
+    <div>Car
+        <div>Apple
+            <div>Pear</div>
+            <div>Pig</div>
+            <div>Cola</div>
+            <div>Soccor</div>
+        </div>
+        <div>Phone
+
+        </div>
+        <div>
+            <div>Book</div>
+            <div>School</div>
+        </div>
+    </div>
+    <div>Note
+        <div>Human
+            <div>Code</div>
+            <div>Operate</div>
+            <div>Man</div>
+        </div>
+        <div>Program
+            <div>Bement
+                <div>Cat</div>
+            </div>
+            <div>Glass</div>
+        </div>
+    </div>
+    <div>Fish
+
+    </div>
+</div>
+
+<p class="btn">
+    <button id="btndf">深度优先遍历</button>
+    <button id="btnbf">广度优先遍历</button>
+    <input type="text" id="searchtxt"/>
+    <button id="btndfs">深度优先查询</button>
+    <button id="btnbfs">广度优先查询</button>
+
+    <button id="btndel">删除</button>
+    <input type="text" id="inserttxt"/>
+    <button id="btninsert">添加</button>
+</p>
+
+
+<script type="text/javascript">
+    var btn_df = document.getElementById("btndf");
+    var btn_bf = document.getElementById("btnbf");
+    var btn_dfs = document.getElementById("btndfs");
+    var btn_bfs = document.getElementById("btnbfs");
+    var searchnode = document.getElementById("searchtxt");
+    var root = document.getElementById("root");
+    var animatearray = [];
+    var intervalid = null;
+
+    //below is new for task9
+    var selected = null;
+    var divs = document.getElementsByTagName("div");
+    var btn_del = document.getElementById("btndel");
+    var btn_insert = document.getElementById("btninsert");
+    var insertnode = document.getElementById("inserttxt");
+
+    function df(node) { //dfs includes pre-order,in-order and post-order.We use pre-order here.
+        if(node !== null)
+        {
+            animatearray.push(node);
+            for (var i=0; i<node.childElementCount; i++)
+            {
+                df(node.children[i]);
+            }
+        }
+    }
+
+    //方法一 BFS 循环 queue
+    function bf(node) { //bfs uses a queue structure.
+        var queuearr = [];
+        while(node)
+        {
+            animatearray.push(node);
+            for (var i=0; i<node.childElementCount; i++)
+            {
+                queuearr.push(node.children[i]);
+            }
+            node = queuearr.shift();
+        }
+    }
+
+    //方法二 BFS 利用递归和global的index指针
+    //    var BFindex = 0;
+    //    function bf(node){
+    //        if(node){
+    //            arrnodes.push(node);
+    //            bf(node.nextElementSibling);
+    //            node = arrnodes[BFindex++];
+    //            bf(node.firstElementChild);
+    //        }
+    //    }
+
+    function initial() { //a little change on task7 code, suitable for searchbtn.
+        for(var i=0; i<divs.length; i++) {
+            divs[i].style.backgroundColor = "white";
+        }
+        animatearray = [];
+        clearInterval(intervalid);
+    }
+
+    function render() {
+        var i=0;
+        intervalid = setInterval(function () {
+            if(i < animatearray.length){
+                if(i > 0) {
+                    animatearray[i-1].style.backgroundColor = "white";
+                }
+                animatearray[i].style.backgroundColor = "blue";
+            }
+            else
+            {
+                initial();
+            }
+            i++; //一定要放在setInterval内部
+        },500);
+    }
+
+    function searchrender() {
+        var i=0;
+        intervalid = setInterval(function () {
+            if(i < animatearray.length){
+                if(i > 0) {
+                    animatearray[i-1].style.backgroundColor = "white";
+                }
+                //node.textContent.split("\n")[0] 或者 node.childNodes[0].nodeValue
+                if(animatearray[i].textContent.split("\n")[0] === searchnode.value){
+                    animatearray[i].style.backgroundColor = "red";
+                    clearInterval(intervalid);
+                }else{
+                    animatearray[i].style.backgroundColor = "blue";
+                }
+            }
+            else
+            {
+                initial();
+                alert("Not Found!");
+            }
+            i++; //一定要放在setInterval内部
+        },500);
+    }
+
+    btn_df.onclick = function () {
+        initial();
+        df(root);
+        render();
+    };
+
+    btn_bf.onclick = function () {
+        initial();
+        bf(root);
+        render();
+    };
+
+    btn_dfs.onclick = function () {
+        initial();
+        df(root);
+        searchrender();
+    };
+    btn_bfs.onclick = function () {
+        initial();
+        bf(root);
+        searchrender();
+    };
+
+    //below is new for task9
+    function selectnode() {
+        for(var i=0; i<divs.length ; i++)
+        {
+            divs[i].onclick = function (e) {
+                initial();
+                //If we use "this" below instead of "e.target", we cannot select new node unless
+                //we conduct selectnode() function after btn_insert.onclick function.
+                //由于selectnode函数只执行了一次，只有固定的初始的61个div有onclick函数。新增的div在dom中存在，但没有oncick函数。
+                //如果选择新的div，this返回的仍是初始的div，只有e.target才会实时更新当前新的div
+                //
+                //BUT W.H.Y
+
+                // alert(this.textContent);
+                e.target.style.backgroundColor = "tomato";
+                e.stopPropagation();
+                selected = e.target;
+            };
+        }
+    }
+
+    selectnode();
+    btn_del.onclick = function () {
+        if(selected === null){
+            alert("Select a node first!")
+        }
+        selected.remove(); //or: selected.parentNode.removeChild(selected);
+    };
+
+    btn_insert.onclick = function () {
+        if(selected === null){
+            alert("Select a node first!")
+        }
+        var newtextnode = document.createTextNode(insertnode.value);
+        var newnode = document.createElement("div");
+        newnode.appendChild(newtextnode);
+        selected.appendChild(newnode);
+    };
+
+
+</script>
+</body>
+</html>

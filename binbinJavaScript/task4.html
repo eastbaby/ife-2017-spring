@@ -58,17 +58,17 @@
     
     btnleftin.onclick = function () {
         if(queueele.children === null){
-            queueele.appendChild(inputNum());
+            queueele.appendChild(inputNum()); //其实没必要加一个判断，firstchild可以为null
         }
         else
         {
             queueele.insertBefore(inputNum(), queueele.firstChild);
         }
-    }
+    };
 
     btnrightin.onclick = function () {
         queueele.appendChild(inputNum());
-    }
+    };
 
     btnleftout.onclick = function () {
         if(queueele.children)
@@ -76,7 +76,7 @@
             var rmele = queueele.removeChild(queueele.firstChild);
             alert("已删除"+rmele.innerHTML);
         }
-    }
+    };
 
     btnrightout.onclick = function () {
         if(queueele.children)
@@ -84,7 +84,7 @@
             var rmele = queueele.removeChild(queueele.lastChild);
             alert("已删除"+rmele.innerHTML);
         }
-    }
+    };
 
 //    queueele.addEventListener("click",function(e){
 //        if(e.target.tagName.toLowerCase()==="span"){
@@ -98,7 +98,7 @@
         {
             queueele.removeChild(e.target);
         }
-    }
+    };
     
 </script>
 </body>

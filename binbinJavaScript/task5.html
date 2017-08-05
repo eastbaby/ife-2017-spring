@@ -70,14 +70,14 @@
             alert("item number in this queue must be 0 ~ 60.");
         }
         else {
-            if (queueele.children === null) {
+            if (queueele.children === null) {//其实没必要加一个判断，firstchild可以为null
                 queueele.appendChild(inputNum());
             }
             else {
                 queueele.insertBefore(inputNum(), queueele.firstChild);
             }
         } 
-    }
+    };
 
     btnrightin.onclick = function () {
         if (!isqueuenumValid()) {
@@ -86,7 +86,7 @@
         else {
             queueele.appendChild(inputNum());
         }
-    }
+    };
 
     btnleftout.onclick = function () {
         if(queueele.children)
@@ -94,7 +94,7 @@
             var rmele = queueele.removeChild(queueele.firstChild);
             alert("已删除"+rmele.innerHTML);
         }
-    }
+    };
 
     btnrightout.onclick = function () {
         if(queueele.children)
@@ -102,7 +102,7 @@
             var rmele = queueele.removeChild(queueele.lastChild);
             alert("已删除"+rmele.innerHTML);
         }
-    }
+    };
 
     btnbubblesort.onclick = function () {
         var itms = queueele.children;
@@ -128,7 +128,7 @@
                 }
             }
         }
-    }
+    };
 
     //    queueele.addEventListener("click",function(e){
     //        if(e.target.tagName.toLowerCase()==="span"){
@@ -139,7 +139,7 @@
     //    或者用onclick函数
     queueele.onclick = function(e){
         queueele.removeChild(e.target);
-    }
+    };
 
 </script>
 </body>

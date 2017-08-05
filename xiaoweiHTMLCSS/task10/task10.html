@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flexbox</title>
+    <!--注意先设置nowrap，再在media里面设置wrap。否则靠近640 width的时候出现多余动画。-->
+    <style>
+        body{
+            display: flex;
+            padding: 20px;
+            justify-content: space-between;
+            align-items: center;
+            flex-flow: row nowrap;
+        }
+        #one{
+            width: 150px;
+            height: 120px;
+        }
+        #two{
+            width: 150px;
+            height: 40px;
+        }
+        #three{
+            width: 150px;
+            height: 40px;
+        }
+        #four{
+            width: 150px;
+            height: 200px;
+            margin-bottom: 20px;
+            border: 1px solid #00f;
+        }
+        #one, #two, #three{
+            border: 1px solid #f00;
+            margin-bottom: 20px;
+        }
+        /*默认是all*/
+        @media (max-width: 640px) {
+            body{
+                flex-flow: row wrap;
+                align-items: flex-start;
+            }
+            #four{
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="one">
+</div>
+<div id="two">
+</div>
+<div id="three">
+</div>
+<div id="four">
+</div>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--基于任务四进行升级-->
+<!--将新元素输入框从input改为textarea-->
+<!--允许一次批量输入多个内容，格式可以为数字、中文、英文等，可以通过用回车，逗号（全角半角均可），-->
+<!--顿号，空格（全角半角、Tab等均可）等符号作为不同内容的间隔.-->
+<!--增加一个查询文本输入框，和一个查询按钮，当点击查询时，将查询词在各个元素内容中做模糊匹配，-->
+<!--将匹配到的内容进行特殊标识，如文字颜色等。举例，内容中有abcd，查询词为ab或bc，则该内容需要标识.-->
+<head>
+    <meta charset="UTF-8">
+    <title>IFE JavaScript Task 06</title>
+    <style>
+        #queue{
+            margin-top: 10px;
+        }
+        span{
+            background: red;
+            margin: 5px;
+            padding: 5px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <textarea id="txt" rows="10" cols="50" placeholder="Input something(num/chinese/english).
+     回车逗号顿号空格作为间隔。"></textarea>
+    <!--用<button>zuoceru</button>也可以-->
+    <input type="button" id="leftin" value="左侧入"/>
+    <input type="button" id="rightin" value="右侧入"/>
+    &nbsp;&nbsp;
+    <input type="button" id="leftout" value="左侧出"/>
+    <input type="button" id="rightout" value="右侧出"/>
+    <button id="searchbtn"> 查询 </button>
+    <input type="text" id="searchtxt"/>
+</div>
+<div id="queue"></div>
+
+<script type="text/javascript">
+    var inputtxt = document.getElementById("txt");
+    var btnleftin = document.getElementById("leftin");
+    var btnrightin = document.getElementById("rightin");
+    var btnleftout = document.getElementById("leftout");
+    var btnrightout = document.getElementById("rightout");
+    var btnsearch = document.getElementById("searchbtn");
+    var inputsearch = document.getElementById("searchtxt");
+    var queueele = document.getElementById("queue");
+
+    function inputSomething() {
+        //回车，逗号（全角半角均可）顿号，空格（全角半角、Tab等均可）等符号作为不同内容的间隔.
+        var origintxt = inputtxt.value.trim(); //trim很重要防止出现""
+        var txtarray = origintxt.split(/[\s , ，、]/);
+//        for(var i=0; i<txtarray.length; i++)
+//        {
+//            alert(txtarray[i]);
+//        }
+        return txtarray;
+    }
+
+    function elecreate(splititm){
+        var splitvalue = document.createTextNode(splititm);
+        var ele = document.createElement("span");
+        ele.appendChild(splitvalue);
+        return ele;
+    }
+
+    btnleftin.onclick = function () {
+        var txtarray = inputSomething();
+        for(var i=txtarray.length-1; i>=0; i--)
+        {
+            var ele = elecreate(txtarray[i]);
+            queueele.insertBefore(ele, queueele.firstChild);
+        }
+    };
+
+    btnrightin.onclick = function () {
+        var txtarray = inputSomething();
+        for(var i=0; i<txtarray.length; i++)
+        {
+            var ele = elecreate(txtarray[i]);
+            queueele.appendChild(ele);
+        }
+
+    };
+
+    btnleftout.onclick = function () {
+        if(queueele.children)
+        {
+            var rmele = queueele.removeChild(queueele.firstChild);
+            alert("已删除"+rmele.innerHTML);
+        }
+    };
+
+    btnrightout.onclick = function () {
+        if(queueele.children)
+        {
+            var rmele = queueele.removeChild(queueele.lastChild);
+            alert("已删除"+rmele.innerHTML);
+        }
+    };
+
+    btnsearch.onclick = function () {
+        for(var i=0; i<queueele.childElementCount; i++)
+        {
+            if(queueele.children[i].textContent.search(inputsearch.value)!== -1)
+            {
+                queueele.children[i].style.backgroundColor = "blue";
+            }
+            else
+            {
+                queueele.children[i].style.backgroundColor = "red";
+            }
+        }
+    };
+    
+    
+    //    queueele.addEventListener("click",function(e){
+    //        if(e.target.tagName.toLowerCase()==="span"){
+    //            queueele.removeChild(e.target);
+    //        }
+    //    })
+
+    //    或者用onclick函数
+    queueele.onclick = function(e){
+        if(e.target.tagName.toLowerCase()==="span") //判断可有可无
+        {
+            queueele.removeChild(e.target);
+        }
+    };
+
+</script>
+</body>
+</html>
