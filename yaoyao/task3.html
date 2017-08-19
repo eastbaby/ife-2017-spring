@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>yaoyaotask3</title>
+    <style type="text/css">
+        #stuffbox{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<form name="myform">
+    <div id="radioid">
+        <label><input type="radio" name="Peopleclass" value="student" checked="checked" onclick="showstudent()" />在校生</label>
+        <label><input type="radio" name="Peopleclass" value="stuff" onclick="showstuff()"/>非在校生</label>
+    </div>
+    <div id="schoolbox">
+        学校
+        <select name="city"  onChange="getschools()">
+            <option value="beijing" selected="selected">北京</option>
+            <option value="shanghai">上海</option>
+        </select>
+        <select name="school">
+            <option value="北京大学" selected="selected">北京大学</option>
+            <option value="清华大学">清华大学</option>
+        </select>
+    </div>
+    <div id="stuffbox">
+        <label for="company">就业单位</label>
+        <input type="text" name="company" id="company"/>
+    </div>
+
+</form>
+<script type="text/javascript">
+    var myform = document.forms["myform"];
+    var schoolbox = document.getElementById("schoolbox");
+    var stuffbox = document.getElementById("stuffbox");
+    function getschools() {
+        var cityschools = [
+            ["北京大学","清华大学"],
+            ["上海交通大学","复旦大学","上海大学"]
+        ];
+        var cityele = document.forms["myform"].elements["city"];
+        var schoolele = document.forms["myform"].elements["school"];
+        var currentschools = cityschools[cityele.selectedIndex];
+        schoolele.length = 0;
+        for (var i=0; i<currentschools.length; i++){
+            schoolele[i] = new Option(currentschools[i],currentschools[i]);
+        }
+    }
+    function showstudent() {
+        schoolbox.style.display = "block";
+        stuffbox.style.display = "none";
+    }
+
+    function showstuff() {
+        schoolbox.style.display = "none";
+        stuffbox.style.display = "block";
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>yaoyaotask1</title>
+    <!--校验规则：-->
+    <!--1.字符数为4~16位-->
+    <!--2.每个英文字母、数字、英文符号长度为1-->
+    <!--3.每个汉字，中文符号长度为2-->
+    <style>
+        #nameremind{
+            float: left;
+            width: 100px;
+            text-align: center;
+            font-size: 15px;
+            line-height: 29px;
+        }
+        #nametxt{
+            width: 200px;
+            height: 25px;
+            border-radius: 5px;
+            border: 1px solid #999999;
+        }
+        #check {
+            width: 50px;
+            height: 29px;
+            /*这里的宽高包含border。因为input button元素有box-sizing: border-box;*/
+            font-size: 15px;
+            color: white;
+            border-radius: 5px;
+            border: 1px solid #999999;
+            background-color: #3355d0;
+            margin-left: 5px;
+        }
+        .formhint{
+            margin-top: 5px;
+            padding-left: 100px;
+            color: #999999;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+<form name="form1" onsubmit="return validateForm()">
+    <div class="formitm">
+        <div id="nameremind">名称</div>
+        <input type="text" id="nametxt" name="fname"/>
+        <input type="submit" id="check" value="验证"/>
+    </div>
+    <div id="hint" class="formhint">
+        必填，长度为4～16个字符
+    </div>
+
+</form>
+
+<script type="text/javascript">
+    function validateForm() {
+        var forminput = document.forms["form1"].elements["fname"];
+        var forminputtxt = forminput.value;
+        var hintnode = document.getElementById("hint");
+        if (forminputtxt === null|| forminputtxt === ""){
+            hintnode.textContent = "姓名不能为空";
+            hintnode.style.color = "red";
+            forminput.style.borderColor = "red";
+            return false;
+        }
+//        \x00-\xff是所有英文字符，\u4e00-\u9fa5是所有常规中文字符。
+// 非常规中文字符是32bit的 (eg,𠮷)，前16bit 一定在 0xD800-0xDBFF 区间， 后16bit 一定在 0xDC00-0xDFFF 区间。
+        //改变forminputtxt无所谓，forminput.value才会影响页面
+        forminputtxt = forminputtxt.replace(/[\ud800-\udfff]/g, 'A');
+        forminputtxt = forminputtxt.replace(/[^\x00-\xff]/g,"**")
+        if(forminputtxt.length > 3 && forminputtxt.length <17){
+           // alert(forminputtxt.length);
+            hintnode.textContent = "名称格式正确";
+            hintnode.style.color = "green";
+            forminput.style.borderColor = "green";
+            return false;
+        }
+    }
+</script>
+</body>
+</html>
