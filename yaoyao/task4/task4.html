@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>yaoyaotask4</title>
+    <!--GO：向蓝色边所面向的方向前进一格（一格等同于正方形的边长）-->
+    <!--TUN LEF：向左转（逆时针旋转90度）-->
+    <!--TUN RIG：向右转（顺时针旋转90度）-->
+    <!--TUN BAC：向右转（旋转180度）-->
+
+    <!--本题三个思路，思路一,小方块变成position:absolute;更改left top值.-->
+    <!--思路二，小方块通过行列判断位置添加到对应的DOM中。由于每次位置变化都要重新创建DOM,不建议使用该方法。动画演示时看得出来不流畅。-->
+    <!--思路三，不用position:absolute而是用translate改变位置。-->
+
+    <!--注意点一，如何表达我们的cube都是无所谓的。就算使用position给予蓝色框框相对红色的定位也不会影响transform的一系列动作。-->
+    <!--注意点二，赋予transform值的时候要注意不要覆盖，都是相对于初始值而言的而不是过程值。-->
+    <!--注意点三，cube绘制有个巧妙方法利用linear-gradient填色。这样只要改style就可以完成旋转。-->
+    <link rel="stylesheet" type="text/css" href="task4css.css">
+</head>
+<body>
+<table id="myTable">
+    <tr>
+        <td></td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>
+            <!--为了获取left top的信息必须用如下显式的inline内联样式表示，或者在js中创建元素。-->
+            <!--js中只能改变创建内联样式。-->
+            <div id="redbox" style="position:absolute; left: 150px; top: 150px;">
+                <div id="bluebox"></div>
+            </div>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+<form>
+    <input type="text" id="inputcmd"/>
+    <input type="button" value="执行" id="mybutton"/>
+</form>
+<script type="text/javascript" src="task4js.js">
+</script>
+</body>
+</html>
