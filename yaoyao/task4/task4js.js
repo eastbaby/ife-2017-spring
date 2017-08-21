@@ -3,7 +3,8 @@ var mybutton = document.getElementById("mybutton");
 var cmd = document.getElementById("inputcmd");
 
 //data structure
-
+// 注意我们其实并没有用到rowId和colId。其实这里没有必要弄一个数据结构，因为只有一个小方块。这样只是为了代码工整。
+// 有的人还在cube数据结构中记录当前旋转的degree，用来更新rotate角度。这也是可以的。
 var cube = {
     rowId: 0,
     colId: 0,

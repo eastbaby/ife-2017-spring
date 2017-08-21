@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>yaoyaotask5</title>
+        <!--对于正方形的移动增加相应动画，包括移动和旋转-->
+        <!--每个指令的执行时间是1s（可以自己调整）-->
+        <!--增加新的指令如下：-->
+        <!--TRA LEF：向屏幕的左侧移动一格，方向不变-->
+        <!--TRA TOP：向屏幕的上面移动一格，方向不变-->
+        <!--TRA RIG：向屏幕的右侧移动一格，方向不变-->
+        <!--TRA BOT：向屏幕的下面移动一格，方向不变-->
+        <!--MOV LEF：方向转向屏幕左侧，并向屏幕的左侧移动一格-->
+        <!--MOV TOP：方向转向屏幕上面，向屏幕的上面移动一格-->
+        <!--MOV RIG：方向转向屏幕右侧，向屏幕的右侧移动一格-->
+        <!--MOV BOT：方向转向屏幕下面，向屏幕的下面移动一格-->
+    <link rel="stylesheet" type="text/css" href="task5css.css">
+</head>
+<body>
+<table id="myTable">
+    <tr>
+        <td></td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>
+            <!--为了获取left top的信息必须用如下显式的inline内联样式表示，或者在js中创建元素。-->
+            <!--js中只能改变创建内联样式。-->
+            <div id="redbox" style="position:absolute; left: 150px; top: 150px;">
+                <div id="bluebox"></div>
+            </div>
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+<div class="buttons">
+    <div class="tra-btn">
+        <button type="button" id="tra_lef">TRA LEF</button>
+        <button type="button" id="tra_top">TRA TOP</button>
+        <button type="button" id="tra_rig">TRA RIG</button>
+        <button type="button" id="tra_bot">TRA BOT</button>
+    </div>
+    <div class="mov-btn">
+        <button type="button" id="mov_lef">MOV LEF</button>
+        <button type="button" id="mov_top">MOV TOP</button>
+        <button type="button" id="mov_rig">MOV RIG</button>
+        <button type="button" id="mov_bot">MOV BOT</button>
+    </div>
+</div>
+<script type="text/javascript" src="task5js.js">
+</script>
+</body>
+</html>
