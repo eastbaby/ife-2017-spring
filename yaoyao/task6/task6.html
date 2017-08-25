@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>yaoyaotask6</title>
+    <!--浮出层的中心默认在屏幕正中-->
+    <!--当浮出层显示时，屏幕滚动时，浮出层始终保持位置固定在屏幕正中，不随屏幕滚动而变化位置。或者禁止页面在有浮出层出现时滚动-->
+    <!--当浮出层显示时，点击浮出层以外的部分，默认为关闭浮出层。可以实现一个半透明的遮罩来挡住浮出层外的部分-->
+    <!--浮出层的样式、内容和逻辑尽量解耦-->
+    <!--提供使用JavaScript控制浮出层展现和关闭的接口-->
+    <!--浮出层的窗口大小可以是一个默认固定值，也可以是随内容变化而自适应变化，也可以是通过接口参数进行调整，自行根据自己能力进行选择-->
+    <!--有能力的同学可以实现浮出层的拖拽移动浮出窗口位置以及拖拽边缘来放大缩小浮出窗口的功能-->
+    <link rel="stylesheet" type="text/css" href="task6css.css">
+</head>
+<body>
+<div id="container">
+    <!--mask可以和popover浮出层并列也可以包含。区别在于popover的position设置成fixed/absolute。-->
+    <div id="mask">
+    </div>
+    <div id="popover">
+        <h5 id="popover-drag">这是一个浮出层的标题</h5>
+        <p>这是一个浮出层的内容</p>
+        <div id="buttons">
+            <!--这里确定和取消功能一样-->
+            <button id="popover-confirm">确定</button>
+            <button id="popover-cancel">取消</button>
+        </div>
+    </div>
+    <div id="initialbtn">
+        <button id="showpop">点击我显示浮出层</button>
+        <button id="setscroll">点我禁用滚动</button>
+    </div>
+
+</div>
+
+<script type="text/javascript" src="task6js.js"></script>
+</body>
+</html>

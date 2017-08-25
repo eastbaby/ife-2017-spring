@@ -1,0 +1,57 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+#container{
+    background-color: #cc8091;
+    height: 1500px;
+}
+
+/*mask的宽高占满整个视窗，或者同时设置top bottom left right为0也可以。*/
+#mask{
+    position: fixed;
+    background-color: #ddd;
+    height: 100%;
+    width: 100%;
+    opacity: 0.4;
+    display: none;
+}
+
+#popover{
+    position: fixed;
+    width: 400px;
+    height: 200px;
+    border: solid 1px gray;
+    background-color: white;
+    display: none;
+}
+
+#popover-drag{
+    height: 20%;
+    background-color: #cccccc;
+}
+
+#popover #buttons{
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+#popover button{
+    width: 90px;
+    height: 30px;
+    background-color: #cdcdcd;
+}
+
+#initialbtn{
+    padding-top: 50px;
+    text-align: center;
+}
+#showpop, #setscroll{
+    width: 200px;
+    height: 30px;
+    background-color: orange;
+    color: white;
+    font-size: larger;
+}
