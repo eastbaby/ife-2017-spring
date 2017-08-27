@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#myTable{
+    border-collapse: collapse;
+    margin: 20px auto;
+    text-align: center;
+}
+
+thead{
+    background-color: #5a5b5b;
+    color: white;
+}
+
+th, td{
+    box-sizing: border-box;
+    border: 1px solid black;
+    width: 150px;
+    height: 50px;
+}
+
+th > div{
+    display: inline-block;
+    vertical-align: middle;
+    /*verticalalign不会继承的,所以里面的div要特别指定*/
+}
+
+.arrow{
+    cursor: default;
+}

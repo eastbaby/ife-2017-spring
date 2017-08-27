@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>yaoyaotask7</title>
+    <!--提供生成表格的接口，表格中的数据，表格样式尽量低耦合-->
+    <!--可以配置对哪些列支持排序功能，并在表头进行排序按钮的显示，图中的样式为示意参考，可自行设定样式及交互方式-->
+    <!--提供点击排序按钮后的响应接口，并提供默认的排序方法，当提供的接口没有具体实现时，按默认的排序方法进行排序操作，并更新表格中的数据显示。-->
+
+    <link rel="stylesheet" type="text/css" href="task7css.css">
+</head>
+<body>
+
+<table id="myTable">
+    <thead>
+    <tr>
+        <th id="name">
+            <div class="subject">姓名</div>
+        </th>
+        <th>
+            <div class="subject">语文</div>
+            <div class="arrow">
+                <!--三角形可以用border绘画-->
+                <div id="chinese-up">&#9650;</div>
+                <div id="chinese-down">&#9660;</div>
+            </div>
+        </th>
+        <th>
+            <div class="subject">数学</div>
+            <div class="arrow">
+                <div id="maths-up">&#9650;</div>
+                <div id="maths-down">&#9660;</div>
+            </div>
+        </th>
+        <th>
+            <div class="subject">英语</div>
+            <div class="arrow">
+                <div id="english-up">&#9650;</div>
+                <div id="english-down">&#9660;</div>
+            </div>
+        </th>
+        <th>
+            <div class="subject">总分</div>
+            <div class="arrow">
+                <div id="total-up">&#9650;</div>
+                <div id="total-down">&#9660;</div>
+            </div>
+        </th>
+    </tr>
+    </thead>
+</table>
+
+<!--本文暂时没有做随机功能-->
+<!--<div id="initialbtn">-->
+    <!--<label for="random-num">学生总数：</label>-->
+    <!--<input type="number" name="random-num" id="random-num" max="10" min="3" required/>-->
+    <!--<button id="random-confirm">生成随机数据</button>-->
+<!--</div>-->
+
+<script type="text/javascript" src="task7js.js"></script>
+</body>
+</html>
