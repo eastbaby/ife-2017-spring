@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- 
+        目标：类似链接gif的效果https://ww3.sinaimg.cn/large/006tNbRwly1fcr5jmrmujg30cj06xqv5.gif 
+        2. 边框利用伪类绝对定位实现。
+        2. 文字色彩流参考链接http://www.zhangxinxu.com/wordpress/2014/02/css3%E4%B8%8E%E6%96%87%E5%AD%97%E6%B8%90%E5%8F%98%E6%B0%B4%E7%BA%B9%E6%B3%A2%E5%8A%A8%E6%95%88%E6%9E%9C/
+
+    -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin: 20px auto;
+            text-align: center;
+            width: 600px;
+            height: 350px;
+            position: relative;
+            line-height: 350px;
+            background: lightgoldenrodyellow;
+            /* border: 1px solid black; */
+        }
+
+        .container img {
+            vertical-align: middle;
+            /* 注意属性写在什么元素下面   */
+        }
+
+        /* @group 边框展开特效。
+         我这里演示的是边框从一半长度到全部的动画, ::before展示左右边框，::after展示上下边框。
+         如果要从无到全部的效果，更改height等属性即可，同时不再需要translate。
+         注意这里显示的变化可以用visibility可以用opacity(更好）。
+         */
+
+        .container::before {
+            content: '';
+            /* content千万不要忘记写 */
+            position: absolute;
+            top: 50%;
+            left: 0;
+            visibility: hidden;
+            transform: translateY(-50%);
+            border: solid black;
+            border-width: 0 2px;
+            width: 100%;
+            height: 50%;
+            transition: all 1s;
+            box-sizing: border-box;
+            /* 改变盒子模型解决border粗的时候包围不起来的情况 */
+        }
+
+        .container:hover::before {
+            height: 100%;
+            top: 0;
+            transform: translateY(0%);
+            visibility: visible;
+        }
+
+        .container::after {
+            content: '';
+            /* content千万不要忘记写 */
+            position: absolute;
+            top: 0;
+            left: 50%;
+            visibility: hidden;
+            transform: translateX(-50%);
+            border: solid black;
+            border-width: 2px 0;
+            width: 50%;
+            height: 100%;
+            transition: all 1s;
+            box-sizing: border-box;
+             /* 改变盒子模型解决border粗的时候包围不起来的情况 */
+        }
+
+        .container:hover::after {
+            width: 100%;
+            left: 0;
+            transform: translateX(0%);
+            visibility: visible;
+        }
+
+        /* @背景模糊
+         */
+
+        .container:hover img {
+            filter: blur(2px);
+            -webkit-filter: blur(2px);
+        }
+
+        /* @group steamer文字流动色彩特效,主要参考张鑫旭文章 [小tip: CSS3与文字渐变光影流动动画效果实现]
+        (http://www.zhangxinxu.com/wordpress/2014/02/css3%E4%B8%8E%E6%96%87%E5%AD%97%E6%B8%90%E5%8F%98%E6%B0%B4%E7%BA%B9%E6%B3%A2%E5%8A%A8%E6%95%88%E6%9E%9C/)
+         */
+        .container h1{
+            opacity: 0;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            background-image: linear-gradient(to right, yellow, blue 25%, yellow 50%, blue 75%, yellow);
+            /* 0到50%的颜色组 = 50%到99%的颜色组，且最后100%的颜色要和开头0的颜色相等,这是为了能无缝衔接流光效果 */
+            background-size:200% 100%;
+            /*背景图片向水平方向扩大一倍，这样background-position才有移动与变化的空间*/
+            -webkit-background-clip: text;
+            color: transparent;
+            /*文字填充色为透明*/
+            -webkit-text-fill-color: transparent;
+            /*背景剪裁为文字，相当于用背景填充文字 CSS3新属性*/
+            transition: opacity 1s;
+        }
+        .container:hover h1{
+            opacity: 1;
+            animation: 4s stream-text infinite linear;
+        }
+        @keyframes stream-text{
+            0%{
+                background-position: 0 0;
+            }
+            100%{
+                background-position: -100% 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="BaiduBear.jpg" alt="image about BaiduBear" />
+        <h1>文字的流转七彩特效</h1>
+    </div>
+
+    <!-- 这样的h5书写更语义化
+    <figure class="wrap">
+        <figcaption class="caption">
+          <div class="container">
+            <h1 class="ribbon">I am Water. A Sophomore student</h1>
+          </div>
+        </figcaption>
+        <img src="xx" alt="saber">
+    </figure> -->
+
+</body>
+
+</html>
