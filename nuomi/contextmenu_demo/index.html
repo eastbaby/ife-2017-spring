@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>contextmenu demo</title>
+    <!-- 主要参考红宝书P388,没有用menu标签-->
+    <style>
+        #wrapper{
+            background: lightblue;
+        }
+        #myMenu{
+            position: absolute;
+            display: none;
+            background: silver; 
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">right click on me.</div>
+    <ul id="myMenu">
+        <li>
+            <a href="#">heihei</a>
+        </li>
+        <li>
+            <a href="#">haha</a>
+        </li>
+        <li>
+            <a href="#">huhuhu</a>
+        </li>
+    </ul>
+<script>
+    var wrapper = document.getElementById("wrapper");
+    var myMenu = document.getElementById("myMenu");
+    wrapper.addEventListener("contextmenu", function(e){
+        e.preventDefault();
+        e.returnValue = false; // for IE
+        myMenu.style.display = 'block'; //!!先显示后才能获取menu的高宽
+        console.log(myMenu.offsetWidth)
+        console.log(e.clientX)
+        console.log(document.documentElement.clientWidth)
+        if(myMenu.offsetWidth + e.clientX > document.documentElement.clientWidth){
+            myMenu.style.left = (e.clientX - myMenu.offsetWidth)+ "px";
+        }else{
+            myMenu.style.left = e.clientX + "px";
+        }
+        if(myMenu.offsetHeight + e.clientY > document.documentElement.clientHeight){
+            myMenu.style.top = (e.clientY - myMenu.offsetHeight)+ "px";
+        }else{
+            myMenu.style.top = e.clientY + "px";
+        }
+    }, false);
+    document.addEventListener("click", function(){
+        myMenu.style.display = "none";
+    },false);
+</script>
+</body>
+</html>
