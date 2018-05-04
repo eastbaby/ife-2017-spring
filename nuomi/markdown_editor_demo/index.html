@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>weiwei markdown</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* header {
+            width: 100%;
+            height: 50px;
+            text-align: center;
+        } */
+        body{
+            width: 100%;
+            height: 100%;
+        }
+        .left {
+            float: left;
+            width: 50%;
+            height: 100vh;  
+        }
+
+        .editarea {
+            width: 100%;
+            height: 100%;
+            resize: none;
+            border: none;
+            outline: none;
+            padding: 20px;
+            font-size: 20px;
+            background: lightgoldenrodyellow;
+        }
+
+        .right {
+            float: left;
+            width: 50%;
+            height: 100vh;
+        }
+
+        .mdarea {
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            font-size: 20px;
+            background: lavender;
+        }
+
+        pre{
+            margin: 5px;
+            padding: 1em;
+            font-size: 16px;
+            background: lightgrey;
+        }
+
+        blockquote{
+            margin: 5px;
+            padding: 2px 2em;
+            color: grey;
+            border-left: 5px solid lightgray;
+        }
+
+        ul, ol{
+            margin: 5px;
+            padding: 0 2em;
+        }
+    </style>
+    <script src="mymark.js"></script>
+</head>
+
+<body>
+    <!-- <header>微微的简易markdown编辑器</header> -->
+    <div class="left">
+        <textarea class="editarea" placeholder="Edit markdown here ..."></textarea>
+    </div>
+    <div class="right">
+        <div class="mdarea"></div>
+    </div>
+    <script type="text/javascript">
+        var editarea = document.querySelector(".editarea");
+        var mdarea = document.querySelector(".mdarea");
+        editarea.addEventListener("input", function(e){
+            mdarea.innerHTML = mymark(e.target.value);
+        }, false);
+    </script>
+</body>
+
+</html>
